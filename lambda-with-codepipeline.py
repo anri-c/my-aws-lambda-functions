@@ -5,7 +5,7 @@ codepipeline = boto3.client('codepipeline')
 
 def put_job_success(jobId, message):
     print(message)
-    code_pipeline.put_job_success_result(jobId=jobId)
+    codepipeline.put_job_success_result(jobId=jobId)
 
 def put_job_failure(jobId, message):
     print(message)

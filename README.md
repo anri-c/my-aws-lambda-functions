@@ -4,6 +4,8 @@
 
 ### iam role policy example
 
+CloudFormation template
+
 ``` yaml
 
   LambdaWithCodePipelineRolePolicy:
@@ -21,7 +23,7 @@
           - Effect: "Allow"
             Action:
               - "codepipeline:PutJobSuccessResult"
-              - "codepipeline:PutJobSuccessResult"
+              - "codepipeline:PutJobFailureResult"
             Resource: "*"
       Roles:
         - Ref: "LambdaWithCodePipelineRole"

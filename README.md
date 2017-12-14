@@ -1,6 +1,6 @@
 
 
-## lambda with codepipeline
+## lambda-with-codepipeline.py
 
 ### iam role policy example
 
@@ -56,4 +56,25 @@ CloudFormation template
   }
 }
 
+```
+
+## codepipeline-approval-notify-slack.py
+
+### part of cloudformation template for codepipeline approval stage
+
+``` yaml
+ - Name: "Approval"
+   Actions:
+     - Name: "Approval"
+       ActionTypeId:
+         Category: "Approval"
+         Owner: "AWS"
+         Version: "1"
+         Provider: "Manual"
+       Configuration:
+         NotificationArn:
+           Ref: "CodepipelineTopic"
+         ExternalEntityLink: !Sub "https://${App}.example.com/"
+         CustomData: "Please review the latest change and approve or reject."
+       RunOrder: "1"
 ```

@@ -2,6 +2,31 @@
 
 ## lambda with codepipeline
 
+### iam role policy example
+
+``` yaml
+
+  LambdaWithCodePipelineRolePolicy:
+    Type: "AWS::IAM::Policy"
+    Properties:
+      PolicyName: "LambdaWithCodePipelineRolePolicy"
+      PolicyDocument:
+        Statement:
+          - Effect: "Allow"
+            Action:
+              - "logs:CreateLogGroup"
+              - "logs:CreateLogStream"
+              - "logs:PutLogEvents"
+            Resource: "arn:aws:logs:*:*:*"
+          - Effect: "Allow"
+            Action:
+              - "codepipeline:PutJobSuccessResult"
+              - "codepipeline:PutJobSuccessResult"
+            Resource: "*"
+      Roles:
+        - Ref: "LambdaWithCodePipelineRole"
+```
+
 ### codepipeline's event example
 
 ``` json
